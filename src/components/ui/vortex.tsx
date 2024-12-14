@@ -187,13 +187,15 @@ export const Vortex = (props: VortexProps) => {
 
   const resize = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D
   ) => {
     const { innerWidth, innerHeight } = window;
 
     canvas.width = innerWidth;
     canvas.height = innerHeight;
-    ctx?.save();
+    ctx.save();
+     ctx.filter = "blur(4px) brightness(200%)";
+    ctx.globalCompositeOperation = "lighter";
     center[0] = 0.5 * canvas.width;
     center[1] = 0.5 * canvas.height;
   };
